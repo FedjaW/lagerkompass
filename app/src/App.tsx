@@ -1,22 +1,16 @@
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import BarcodeScanner from "react-qr-barcode-scanner";
+import HomePage from "./pages/HomePage";
+import ScanPage from "./pages/ScanPage";
+import StockItemPage from "./pages/StockItemPage";
 
 function App() {
-  const [data, setData] = useState("Not Found");
-
   return (
-    <>
-      <BarcodeScanner
-        width={500}
-        height={500}
-        onUpdate={(_, result) => {
-          if (result) setData(result.getText());
-          else setData("Not Found");
-        }}
-      />
-      <p>{data}</p>
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/scan" element={<ScanPage />} />
+      <Route path="/stock-item" element={<StockItemPage />} />
+    </Routes>
   );
 }
 
