@@ -1,15 +1,11 @@
-import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import BarcodeScanner from "react-qr-barcode-scanner";
 
-function ScanPage() {
-  const navigate = useNavigate();
-  const handleBarcodeScanned = (barcode: string) => {
-    navigate("/stock-item", {
-      state: { barcode: barcode },
-    });
-  };
+type ScannerProps = {
+  onScanned: (barcode: string) => void;
+};
 
+function Scanner({ onScanned }: ScannerProps) {
   return (
     <Card>
       <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -17,7 +13,7 @@ function ScanPage() {
           width={600}
           height={600}
           onUpdate={(_, result) => {
-            if (result) handleBarcodeScanned(result.getText());
+            if (result) onScanned(result.getText());
           }}
         />
       </CardContent>
@@ -25,4 +21,4 @@ function ScanPage() {
   );
 }
 
-export default ScanPage;
+export default Scanner;

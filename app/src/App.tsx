@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
-import ScanPage from "./pages/ScanPage";
+import ScanPage from "./components/Scanner";
 import StockItemPage from "./pages/StockItemPage";
 
 function App() {
